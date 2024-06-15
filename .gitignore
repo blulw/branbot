@@ -1,1 +1,6 @@
 .env
+.pyc
+cat.jpg
+dog.jpg
+data.txt
+bot.log
