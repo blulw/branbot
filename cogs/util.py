@@ -21,7 +21,7 @@ class Util(commands.Cog):
             user = await self.bot.fetch_user(myID)
             await user.send("Exception in ping: ```" + str(e) + "```")
     @bot.tree.command(name="ping", description="displays the ping of the bot")
-    async def ping(self, interaction: discord.Interaction):
+    async def pong(self, interaction: discord.Interaction):
         try:
             embedded_msg = discord.Embed(title="Pong!")
             embedded_msg.add_field(name="Latency", value=f"{round(self.bot.latency * 1000)}ms", inline=True)

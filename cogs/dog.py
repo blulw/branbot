@@ -42,7 +42,7 @@ class Dog(commands.Cog):
             await user.send("Exception in dog: ```" + str(e) + "```")
 
     @bot.tree.command(name="dog", description="shows a random dog image")
-    async def dog(self, interaction: discord.Interaction):
+    async def woof(self, interaction: discord.Interaction):
         try:
             url = 'https://random.dog/woof'
 

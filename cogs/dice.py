@@ -31,7 +31,7 @@ class Dice(commands.Cog):
 
     @bot.tree.command(name="dice", description="rolls a random number between 1 and 6")
     @app_commands.describe(sides="the upper limit for your roll")
-    async def dice(self, interaction: discord.Interaction, sides: int=None):
+    async def roll(self, interaction: discord.Interaction, sides: int=None):
         try:
             if sides == None:
                 await interaction.response.send_message("You rolled " + str(random.randint(1,6)))

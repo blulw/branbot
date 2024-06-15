@@ -33,7 +33,7 @@ class Cat(commands.Cog):
             
 
     @bot.tree.command(name="cat", description="shows a random cat image")
-    async def cat(self, interaction: discord.Interaction):
+    async def meow(self, interaction: discord.Interaction):
         try:
             url = 'https://cataas.com/cat'
             filename = 'cat.jpg'
