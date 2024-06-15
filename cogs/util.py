@@ -30,5 +30,19 @@ class Util(commands.Cog):
         except Exception as e:
             user = await self.bot.fetch_user(myID)
             await user.send("Exception in ping: ```" + str(e) + "```")
+            
+      
+    @commands.command(aliases=["h", "list"])
+    async def help(self, ctx):
+        try:
+            embedded_msg = discord.Embed(title="Help Menu",
+                                         description="prefix is `` `")
+            embedded_msg.add_field(name="Commands", value="**sync** - syncs all slash commands\n**cat** - sends a random cat photo\n**dog** - sends a random dog photo\n**ping** - displays the ping of the bot\n**dice <sides>** - rng\n**help** - displays this menu", inline=True)
+            embedded_msg.add_field(name="Made by bran", value=f"<@{myID}>", inline=True)
+            embedded_msg.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar)
+            await ctx.send(embed=embedded_msg)
+        except Exception as e:
+            user = await self.bot.fetch_user(myID)
+            await user.send("Exception in ping: ```" + str(e) + "```")
 async def setup(bot):
     await bot.add_cog(Util(bot))

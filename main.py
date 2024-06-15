@@ -15,8 +15,9 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 
-bot = commands.Bot(command_prefix="`", intents=intents)
+bot = commands.Bot(command_prefix="`", intents=intents, owner_id=myID)
 
+bot.remove_command('help')
 
 @bot.event
 async def on_ready():
@@ -52,6 +53,8 @@ async def main():
     async with bot:
         await load_extensions()
         await bot.start(TOKEN)
+    
+
 
 if __name__ == "__main__":
     asyncio.run(main())

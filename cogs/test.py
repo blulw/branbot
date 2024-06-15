@@ -19,11 +19,8 @@ class Test(commands.Cog):
     @commands.command()
     async def test(self, ctx):
         try:
-            author = str(ctx.author)
-            if not db.exists(author):
-                db.set(author, 0)
-            db.append(author, 1)
-            await ctx.reply(f'you have run this command {db.get(author)} times.')
+            await ctx.send(ctx.author.id)
+            await ctx.send(type(ctx.author.id))
         except Exception as e:
             user = await self.bot.fetch_user(myID)
             await user.send("Exception in test: ```" + str(e) + "```")
