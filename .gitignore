@@ -4,3 +4,4 @@ dog.jpg
 data.txt
 bot.log
 /cogs/__pycache__
+*.pyc
