@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
-from main import bot
+from main import bot, myID
+
 class Util(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -17,7 +18,7 @@ class Util(commands.Cog):
             embedded_msg.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar)
             await ctx.send(embed=embedded_msg)
         except Exception as e:
-            user = await self.bot.fetch_user('817475032112037888')
+            user = await self.bot.fetch_user(myID)
             await user.send("Exception in ping: ```" + str(e) + "```")
     @bot.tree.command(name="ping", description="displays the ping of the bot")
     async def ping(self, interaction: discord.Interaction):
@@ -27,7 +28,7 @@ class Util(commands.Cog):
             embedded_msg.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar)
             await interaction.response.send_message(embed=embedded_msg)
         except Exception as e:
-            user = await self.bot.fetch_user('817475032112037888')
+            user = await self.bot.fetch_user(myID)
             await user.send("Exception in ping: ```" + str(e) + "```")
 async def setup(bot):
     await bot.add_cog(Util(bot))

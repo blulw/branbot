@@ -9,6 +9,7 @@ import logging.handlers
 
 load_dotenv()
 TOKEN = os.getenv('TOKEN')
+myID = os.getenv('myID')
 
 intents = discord.Intents.default()
 intents.message_content = True

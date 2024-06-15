@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import requests 
-from main import bot
+from main import bot, myID
 
 
 class Cat(commands.Cog):
@@ -28,7 +28,7 @@ class Cat(commands.Cog):
             embedded_msg.set_footer(text="Provided by CATAAS", icon_url=ctx.message.author.avatar)
             await ctx.send(file=file, embed=embedded_msg)
         except Exception as e:
-            user = await self.bot.fetch_user('817475032112037888')
+            user = await self.bot.fetch_user(myID)
             await user.send("Exception in cat: ```" + str(e) + "```")
             
 
@@ -48,7 +48,7 @@ class Cat(commands.Cog):
             embedded_msg.set_footer(text="Provided by CATAAS", icon_url=interaction.user.avatar)
             await interaction.response.send_message(file=file, embed=embedded_msg)
         except Exception as e:
-            user = await self.bot.fetch_user('817475032112037888')
+            user = await self.bot.fetch_user(myID)
             await user.send("Exception in ping: ```" + str(e) + "```")
 
 async def setup(bot):

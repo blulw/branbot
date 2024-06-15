@@ -4,6 +4,7 @@ import pickledb
 from datetime import datetime
 from discord.ext import commands
 import math
+from main import bot, myID
 
 db = pickledb.load('discord.db', True)
 
@@ -24,7 +25,7 @@ class Test(commands.Cog):
             db.append(author, 1)
             await ctx.reply(f'you have run this command {db.get(author)} times.')
         except Exception as e:
-            user = await self.bot.fetch_user('817475032112037888')
+            user = await self.bot.fetch_user(myID)
             await user.send("Exception in test: ```" + str(e) + "```")
 
 async def setup(bot):

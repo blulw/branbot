@@ -1,5 +1,5 @@
 from typing import Literal, Optional
-from main import bot
+from main import bot, myID
 import discord
 from discord.ext import commands
 from discord import app_commands
@@ -17,7 +17,7 @@ class Sync(commands.Cog):
         try:
             await interaction.send("test")
         except Exception as e:
-            user = await self.bot.fetch_user('817475032112037888')
+            user = await self.bot.fetch_user(myID)
             await user.send("Exception in sync: ```" + str(e) + "```")
 
     @commands.command()
@@ -54,7 +54,7 @@ class Sync(commands.Cog):
 
             await ctx.send(f"Synced the tree to {ret}/{len(guilds)}.")
         except Exception as e:
-            user = await self.bot.fetch_user('817475032112037888')
+            user = await self.bot.fetch_user(myID)
             await user.send("Exception in sync: ```" + str(e) + "```")
 
 async def setup(bot):

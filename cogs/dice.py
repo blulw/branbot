@@ -3,7 +3,7 @@ from discord import app_commands
 from discord.ext import commands
 import random
 import asyncio
-from main import bot
+from main import bot, myID
 
 class Dice(commands.Cog):
     def __init__(self, bot):
@@ -26,7 +26,7 @@ class Dice(commands.Cog):
             if "invalid literal for int() with base 10:" in str(e):
                 await ctx.send("Number must be an integer!")
             else:
-                user = await self.bot.fetch_user('817475032112037888')
+                user = await self.bot.fetch_user(myID)
                 await user.send("Exception in dice: ```" + str(e) + "```")
 
     @bot.tree.command(name="dice", description="rolls a random number between 1 and 6")
@@ -43,7 +43,7 @@ class Dice(commands.Cog):
             if "invalid literal for int() with base 10:" in str(e):
                 await interaction.response.send_message("Number must be an integer!")
             else:
-                user = await self.bot.fetch_user('817475032112037888')
+                user = await self.bot.fetch_user(myID)
                 await user.send("Exception in dice: ```" + str(e) + "```")
 async def setup(bot):
     await bot.add_cog(Dice(bot))
