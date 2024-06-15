@@ -49,7 +49,7 @@ class Cat(commands.Cog):
             await interaction.response.send_message(file=file, embed=embedded_msg)
         except Exception as e:
             user = await self.bot.fetch_user(myID)
-            await user.send("Exception in ping: ```" + str(e) + "```")
+            await user.send("Exception in cat: ```" + str(e) + "```")
 
 async def setup(bot):
     await bot.add_cog(Cat(bot))
