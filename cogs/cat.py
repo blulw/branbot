@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import requests 
-
+from main import bot
 
 
 class Cat(commands.Cog):
@@ -30,6 +30,26 @@ class Cat(commands.Cog):
         except Exception as e:
             user = await self.bot.fetch_user('817475032112037888')
             await user.send("Exception in cat: ```" + str(e) + "```")
+            
+
+    @bot.tree.command(name="cat", description="shows a random cat image")
+    async def cat(self, interaction: discord.Interaction):
+        try:
+            url = 'https://cataas.com/cat'
+            filename = 'cat.jpg'
+
+            r = requests.get(url)
+
+            with open(filename,'wb') as f:
+                f.write(r.content)
+            file = discord.File("cat.jpg", filename="cat.jpg")
+            embedded_msg = discord.Embed(title="KITTYYYYYY!")
+            embedded_msg.set_image(url="attachment://cat.jpg")
+            embedded_msg.set_footer(text="Provided by CATAAS", icon_url=interaction.user.avatar)
+            await interaction.response.send_message(file=file, embed=embedded_msg)
+        except Exception as e:
+            user = await self.bot.fetch_user('817475032112037888')
+            await user.send("Exception in ping: ```" + str(e) + "```")
 
 async def setup(bot):
     await bot.add_cog(Cat(bot))
