@@ -1,13 +1,5 @@
 .env
-cat.cypython-312.pyc
-dog.cypython-312.pyc
-util.cypython-312.pyc
-eco.cypython-312.pyc
-level.cypython-312.pyc
-test.cypython-312.pyc
-dice.cypython-312.pyc
-main.cypython-312.pyc
-sync.cypython-312.pyc
+*.pyc
 cat.jpg
 dog.jpg
 data.txt
