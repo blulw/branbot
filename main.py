@@ -1,0 +1,56 @@
+import discord
+from dotenv import load_dotenv
+import os
+from discord.ext import commands
+import asyncio
+import logging
+import logging.handlers
+
+
+load_dotenv()
+TOKEN = os.getenv('TOKEN')
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+
+bot = commands.Bot(command_prefix="`", intents=intents)
+
+
+@bot.event
+async def on_ready():
+    print("Bot ready!")
+    await bot.change_presence(
+        status=discord.Status.idle,
+        activity=discord.Activity(type=discord.ActivityType.custom, name="custom", state="bruhhh i suck at this shit on god")
+    )
+    print('status set')
+   
+
+async def load_extensions():
+    for filename in os.listdir("./cogs"):
+        if filename.endswith(".py"):
+            await bot.load_extension(f"cogs.{filename[:-3]}")
+
+async def setup_logging():
+    logger = logging.getLogger('discord')
+    logger.setLevel(logging.INFO)
+    handler = logging.handlers.RotatingFileHandler(
+        filename='bot.log',
+        encoding='utf-8',
+        maxBytes=32 * 1024 * 1024,
+        backupCount=5,
+    )
+    dt_fmt = '%Y-%m-%d %H:%M:%S'
+    formatter = logging.Formatter('[{asctime}] [{levelname:<8} {name}: {message}', dt_fmt, style='{')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+
+async def main():
+    await setup_logging()
+    async with bot:
+        await load_extensions()
+        await bot.start(TOKEN)
+
+if __name__ == "__main__":
+    asyncio.run(main())
