@@ -14,10 +14,20 @@ myID = os.getenv('myID')
 intents = discord.Intents.default()
 intents.message_content = True
 
-
 bot = commands.Bot(command_prefix="`", intents=intents, owner_id=myID)
 
-bot.remove_command('help')
+class MyHelpCommand(commands.MinimalHelpCommand):
+    async def send_pages(self):
+        destination = self.get_destination()
+        e = discord.Embed(color=discord.Color.blurple(), description='')
+        for page in self.paginator.pages:
+            e.description += page
+        await destination.send(embed=e)
+
+bot.help_command = MyHelpCommand()
+
+defaultPrefix = "`"
+prefix = defaultPrefix
 
 @bot.event
 async def on_ready():
