@@ -5,7 +5,7 @@ import random
 import asyncio
 from main import bot, myID
 
-class Dice(commands.Cog):
+class Fun(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -13,7 +13,7 @@ class Dice(commands.Cog):
     async def on_ready(self):
         print(f"{__name__} is online!")
 
-    @commands.command(aliases=["d", "roll"])
+    @commands.command(aliases=["d", "roll"], description="rolls a random number between 1 and 6")
     async def dice(self, ctx, sides=None):
         try:
             if sides == None:
@@ -46,4 +46,4 @@ class Dice(commands.Cog):
                 user = await self.bot.fetch_user(myID)
                 await user.send("Exception in dice: ```" + str(e) + "```")
 async def setup(bot):
-    await bot.add_cog(Dice(bot))
+    await bot.add_cog(Fun(bot))
