@@ -11,7 +11,7 @@ load_dotenv()
 TOKEN = os.getenv('TOKEN')
 myID = os.getenv('myID')
 
-intents = discord.Intents.default()
+intents = discord.Intents.all()
 intents.message_content = True
 
 bot = commands.Bot(command_prefix="`", intents=intents, owner_id=myID)
@@ -25,6 +25,7 @@ class MyHelpCommand(commands.MinimalHelpCommand):
         await destination.send(embed=e)
 
 bot.help_command = MyHelpCommand()
+
 
 defaultPrefix = "`"
 prefix = defaultPrefix

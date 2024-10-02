@@ -29,8 +29,12 @@ class Test(commands.Cog):
 
             file = discord.File(fp=filename, filename=filename)
 
-            await ctx.send(file=file)
+            embedded_msg = discord.Embed(title="")
+            embedded_msg.set_image(url="attachment://person.jpeg")
+            embedded_msg.set_footer(text="Provided by thispersondoesnotexist", icon_url=ctx.message.author.avatar)
 
+            await ctx.send(file=file, embed=embedded_msg)
+            
         except Exception as e:
             user = await self.bot.fetch_user(myID)
             await user.send("Exception in test: ```" + str(e) + "```")
