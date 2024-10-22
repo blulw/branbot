@@ -152,21 +152,21 @@ class Random(commands.Cog):
             user = await self.bot.fetch_user(myID)
             await user.send("Exception in human: ```" + str(e) + "```")
             
-    @bot.tree.command(name="lol", description="shows a random human image")
-    async def lol(self, interaction: discord.Interaction, search: str=None):
-        try:
-            link = "https://kuuichi.xyz"
-            if search != None:
-                link = "https://kuuichi.xyz?file=" + search
-            await interaction.response.send_message(link)
-            embedded_msg = discord.Embed(title="")
-            embedded_msg.set_image(url=link)
-            embedded_msg.set_footer(text="Provided by keiran", icon_url=interaction.user.avatar)
+    # @bot.tree.command(name="lol", description="shows a random human image")
+    # async def lol(self, interaction: discord.Interaction, search: str=None):
+    #     try:
+    #         link = "https://kuuichi.xyz"
+    #         if search != None:
+    #             link = "https://kuuichi.xyz?file=" + search
+    #         await interaction.response.send_message(link)
+    #         embedded_msg = discord.Embed(title="")
+    #         embedded_msg.set_image(url=link)
+    #         embedded_msg.set_footer(text="Provided by keiran", icon_url=interaction.user.avatar)
 
-            await interaction.response.send_message(embed=embedded_msg)
+    #         await interaction.response.send_message(embed=embedded_msg)
             
-        except Exception as e:
-            user = await self.bot.fetch_user(myID)
-            await user.send("Exception in lol: ```" + str(e) + "```")
+    #     except Exception as e:
+    #         user = await self.bot.fetch_user(myID)
+    #         await user.send("Exception in lol: ```" + str(e) + "```")
 async def setup(bot):
     await bot.add_cog(Random(bot))
