@@ -45,5 +45,7 @@ class Fun(commands.Cog):
             else:
                 user = await self.bot.fetch_user(myID)
                 await user.send("Exception in dice: ```" + str(e) + "```")
+                    
+
 async def setup(bot):
     await bot.add_cog(Fun(bot))

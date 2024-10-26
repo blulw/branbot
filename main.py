@@ -15,7 +15,6 @@ intents = discord.Intents.all()
 intents.message_content = True
 
 bot = commands.Bot(command_prefix="`", intents=intents, owner_id=myID)
-
 class MyHelpCommand(commands.MinimalHelpCommand):
     async def send_pages(self):
         destination = self.get_destination()
@@ -29,6 +28,8 @@ bot.help_command = MyHelpCommand()
 
 defaultPrefix = "`"
 prefix = defaultPrefix
+
+
 
 @bot.event
 async def on_ready():
