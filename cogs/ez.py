@@ -19,7 +19,7 @@ class EZ(commands.Cog):
         try:
             embedded_msg = discord.Embed(title="Autoplay Fix")
             embedded_msg.add_field(name="", value="go [here](https://e-z.gg/dash/bio)\n go to file settings\n turn autoplay fix on\n click the cogwheel", inline=True)
-            embedded_msg.set_image(url="https://bran.lol/img/ez/click.png")
+            embedded_msg.set_image(url="https://media.bran.lol/ez/click.png")
             await interaction.response.send_message(embed=embedded_msg)
         except Exception as e:
             user = await self.bot.fetch_user(myID)
@@ -33,7 +33,7 @@ class EZ(commands.Cog):
         try:
             embedded_msg = discord.Embed(title="Invisible Border")
             embedded_msg.add_field(name="", value="go [here](https://e-z.gg/dash/bio)\n go to cosmetic settings\n adjust values according to image", inline=True)
-            embedded_msg.set_image(url="https://bran.lol/img/ez/border.png")
+            embedded_msg.set_image(url="https://media.bran.lol/ez/border.png")
             await interaction.response.send_message(embed=embedded_msg)
         except Exception as e:
             user = await self.bot.fetch_user(myID)
@@ -47,7 +47,7 @@ class EZ(commands.Cog):
         try:
             embedded_msg = discord.Embed(title="Rearrange Page")
             embedded_msg.add_field(name="", value="go [here](https://e-z.gg/dash/bio)\n go to general settings\n scroll to layout order and adjust to your liking", inline=True)
-            embedded_msg.set_image(url="https://bran.lol/img/ez/rearrange.png")
+            embedded_msg.set_image(url="https://media.bran.lol/ez/rearrange.png")
             await interaction.response.send_message(embed=embedded_msg)
         except Exception as e:
             user = await self.bot.fetch_user(myID)
@@ -62,7 +62,7 @@ class EZ(commands.Cog):
             embedded_msg = discord.Embed(title="Sparkles Colour")
             embedded_msg.add_field(name="", value="Sparkle colour is determined by primary and secondary colours", inline=True)
             embedded_msg.add_field(name="", value="go [here](https://e-z.gg/dash/bio)\n go to cosmetic settings\n adjust to your liking", inline=True)
-            embedded_msg.set_image(url="https://bran.lol/img/ez/sparkles.png")
+            embedded_msg.set_image(url="https://media.bran.lol/ez/sparkles.png")
             await interaction.response.send_message(embed=embedded_msg)
         except Exception as e:
             user = await self.bot.fetch_user(myID)
