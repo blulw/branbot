@@ -15,40 +15,42 @@ class Random(commands.Cog):
     @commands.command(aliases=["meow", "kitty"], description="shows a random cat image")
     async def cat(self, ctx):
         try:
-            # url = 'https://cataas.com/cat'
-            # filename = 'cat.jpg'
+            url = 'https://cataas.com/cat'
+            filename = 'cat.jpg'
 
-            # r = requests.get(url)
+            r = requests.get(url)
 
-            # with open(filename,'wb') as f:
-            #     f.write(r.content)
-            # file = discord.File("cat.jpg", filename="cat.jpg")
-            # embedded_msg = discord.Embed(title="KITTYYYYYY!")
-            # embedded_msg.set_image(url="attachment://cat.jpg")
-            # embedded_msg.set_footer(text="Provided by CATAAS", icon_url=ctx.message.author.avatar)
-            # await ctx.send(file=file, embed=embedded_msg)
-            await ctx.send("cataas broken, if i keep this working the bot breaks")
+            with open(filename,'wb') as f:
+                f.write(r.content)
+            file = discord.File("cat.jpg", filename="cat.jpg")
+            embedded_msg = discord.Embed(title="KITTYYYYYY!")
+            embedded_msg.set_image(url="attachment://cat.jpg")
+            embedded_msg.set_footer(text="Provided by CATAAS", icon_url=ctx.message.author.avatar)
+            await ctx.send(file=file, embed=embedded_msg)
+            #await ctx.send("cataas broken, if i keep this working the bot breaks")
         except Exception as e:
             user = await self.bot.fetch_user(myID)
             await user.send("Exception in cat: ```" + str(e) + "```")
             
-
+    @discord.app_commands.guild_install(func=None)
+    @discord.app_commands.allowed_installs(guilds=True, users=True)
+    @discord.app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     @bot.tree.command(name="cat", description="shows a random cat image")
     async def meow(self, interaction: discord.Interaction):
         try:
-            # url = 'https://cataas.com/cat'
-            # filename = 'cat.jpg'
+            url = 'https://cataas.com/cat'
+            filename = 'cat.jpg'
 
-            # r = requests.get(url)
+            r = requests.get(url)
 
-            # with open(filename,'wb') as f:
-            #     f.write(r.content)
-            # file = discord.File("cat.jpg", filename="cat.jpg")
-            # embedded_msg = discord.Embed(title="KITTYYYYYY!")
-            # embedded_msg.set_image(url="attachment://cat.jpg")
-            # embedded_msg.set_footer(text="Provided by CATAAS", icon_url=interaction.user.avatar)
-            # await interaction.response.send_message(file=file, embed=embedded_msg)
-            await interaction.response.send_message("cataas broken, if i keep this working the bot breaks")
+            with open(filename,'wb') as f:
+                f.write(r.content)
+            file = discord.File("cat.jpg", filename="cat.jpg")
+            embedded_msg = discord.Embed(title="KITTYYYYYY!")
+            embedded_msg.set_image(url="attachment://cat.jpg")
+            embedded_msg.set_footer(text="Provided by CATAAS", icon_url=interaction.user.avatar)
+            await interaction.response.send_message(file=file, embed=embedded_msg)
+            #await interaction.response.send_message("cataas broken, if i keep this working the bot breaks")
         except Exception as e:
             user = await self.bot.fetch_user(myID)
             await user.send("Exception in cat: ```" + str(e) + "```")
@@ -82,6 +84,9 @@ class Random(commands.Cog):
             user = await self.bot.fetch_user(myID)
             await user.send("Exception in dog: ```" + str(e) + "```")
 
+    @discord.app_commands.guild_install(func=None)
+    @discord.app_commands.allowed_installs(guilds=True, users=True)
+    @discord.app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     @bot.tree.command(name="dog", description="shows a random dog image")
     async def woof(self, interaction: discord.Interaction):
         try:
@@ -132,6 +137,9 @@ class Random(commands.Cog):
             await user.send("Exception in person: ```" + str(e) + "```")
             
 
+    @discord.app_commands.guild_install(func=None)
+    @discord.app_commands.allowed_installs(guilds=True, users=True)
+    @discord.app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     @bot.tree.command(name="human", description="shows a random human image")
     async def human(self, interaction: discord.Interaction):
         try:

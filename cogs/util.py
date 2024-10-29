@@ -20,6 +20,10 @@ class Util(commands.Cog):
         except Exception as e:
             user = await self.bot.fetch_user(myID)
             await user.send("Exception in ping: ```" + str(e) + "```")
+            
+    @discord.app_commands.guild_install(func=None)
+    @discord.app_commands.allowed_installs(guilds=True, users=True)
+    @discord.app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     @bot.tree.command(name="ping", description="displays the ping of the bot")
     async def pong(self, interaction: discord.Interaction):
         try:

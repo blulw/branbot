@@ -29,6 +29,9 @@ class Fun(commands.Cog):
                 user = await self.bot.fetch_user(myID)
                 await user.send("Exception in dice: ```" + str(e) + "```")
 
+    @discord.app_commands.guild_install(func=None)
+    @discord.app_commands.allowed_installs(guilds=True, users=True)
+    @discord.app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     @bot.tree.command(name="dice", description="rolls a random number between 1 and 6")
     @app_commands.describe(sides="the upper limit for your roll")
     async def roll(self, interaction: discord.Interaction, sides: int=None):
