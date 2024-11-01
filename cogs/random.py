@@ -59,11 +59,17 @@ class Random(commands.Cog):
     async def glaive(self, ctx):
         try:
             url = 'https://api.bran.lol/glaive'
+            filename = 'glaive.png'
 
+            r = requests.get(url)
+
+            with open(filename, 'wb') as f:
+                f.write(r.content)
+            file = discord.File("glaive.png", filename="glaive.png")
             embedded_msg = discord.Embed(title="gaive!")
-            embedded_msg.set_image(url=url)
+            embedded_msg.set_image(url="attachment://glaive.png")
             embedded_msg.set_footer(text="Provided by api.bran.lol", icon_url=ctx.message.author.avatar)
-            await ctx.send(embed=embedded_msg)
+            await ctx.send(file=file, embed=embedded_msg)
         except Exception as e:
             user = await self.bot.fetch_user(myID)
             await user.send("Exception in glaive: ```" + str(e) + "```")
@@ -75,11 +81,17 @@ class Random(commands.Cog):
     async def astrid(self, interaction: discord.Interaction):
         try:
             url = 'https://api.bran.lol/glaive'
+            filename = 'glaive.png'
 
+            r = requests.get(url)
+
+            with open(filename, 'wb') as f:
+                f.write(r.content)
+            file = discord.File("glaive.png", filename="glaive.png")
             embedded_msg = discord.Embed(title="gaive!")
-            embedded_msg.set_image(url=url)
+            embedded_msg.set_image(url="attachment://glaive.png")
             embedded_msg.set_footer(text="Provided by api.bran.lol", icon_url=interaction.user.avatar)
-            await interaction.response.send_message(embed=embedded_msg)
+            await interaction.response.send_message(file=file, embed=embedded_msg)
         except Exception as e:
             user = await self.bot.fetch_user(myID)
             await user.send("Exception in glaive: ```" + str(e) + "```")
