@@ -55,6 +55,35 @@ class Random(commands.Cog):
             user = await self.bot.fetch_user(myID)
             await user.send("Exception in cat: ```" + str(e) + "```")
 
+    @commands.command(aliases=["astrid", "ash"], description="shows a random glaive image")
+    async def glaive(self, ctx):
+        try:
+            url = 'https://api.bran.lol/glaive'
+
+            embedded_msg = discord.Embed(title="gaive!")
+            embedded_msg.set_image(url=url)
+            embedded_msg.set_footer(text="Provided by api.bran.lol", icon_url=ctx.message.author.avatar)
+            await ctx.send(embed=embedded_msg)
+        except Exception as e:
+            user = await self.bot.fetch_user(myID)
+            await user.send("Exception in glaive: ```" + str(e) + "```")
+
+    @discord.app_commands.guild_install(func=None)
+    @discord.app_commands.allowed_installs(guilds=True, users=True)
+    @discord.app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
+    @bot.tree.command(name="glaive", description="shows a random glaive image")
+    async def astrid(self, interaction: discord.Interaction):
+        try:
+            url = 'https://api.bran.lol/glaive'
+
+            embedded_msg = discord.Embed(title="gaive!")
+            embedded_msg.set_image(url=url)
+            embedded_msg.set_footer(text="Provided by api.bran.lol", icon_url=interaction.user.avatar)
+            await interaction.response.send_message(embed=embedded_msg)
+        except Exception as e:
+            user = await self.bot.fetch_user(myID)
+            await user.send("Exception in glaive: ```" + str(e) + "```")
+
     @commands.command(aliases=["woof", "bark", "puppy"], description="shows a random dog image")
     async def dog(self, ctx):
         try:
