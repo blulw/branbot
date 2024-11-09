@@ -8,3 +8,4 @@ cogs/__pycache__/
 /cogs/__pycache__
 .db
 *.pyc
+ecosystem.config.json

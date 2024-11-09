@@ -29,7 +29,13 @@ bot.help_command = MyHelpCommand()
 defaultPrefix = "`"
 prefix = defaultPrefix
 
-
+@bot.tree.context_menu(name="Message Context")
+async def context(interaction: discord.Interaction, message: discord.Message):
+    try:
+        await interaction.response.send_message(f"Message id: {message.id}\nMessage author: {message.author.id} Bot: {message.author.bot}")
+    except Exception as e:
+        user = await self.bot.fetch_user(myID)
+        await user.send("Exception in context: ```" + str(e) + "```")
 
 @bot.event
 async def on_ready():

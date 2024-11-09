@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from main import bot, myID
+import asyncio
 
 class Util(commands.Cog):
     def __init__(self, bot):
@@ -20,7 +21,7 @@ class Util(commands.Cog):
         except Exception as e:
             user = await self.bot.fetch_user(myID)
             await user.send("Exception in ping: ```" + str(e) + "```")
-            
+
     @discord.app_commands.guild_install(func=None)
     @discord.app_commands.allowed_installs(guilds=True, users=True)
     @discord.app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
@@ -34,5 +35,35 @@ class Util(commands.Cog):
         except Exception as e:
             user = await self.bot.fetch_user(myID)
             await user.send("Exception in ping: ```" + str(e) + "```")
+           
+    
+    @commands.command()
+    async def dm(self, ctx, userToDM: int=None, *messageToSend):
+        try:
+            if userToDM == None:
+                await ctx.send("Must Provide a User ID!")
+            elif messageToSend == None:
+                await ctx.send("No message!")
+            else:
+                if str(ctx.author.id) == myID:
+                    message = ' '.join(messageToSend)
+                    user = await self.bot.fetch_user(userToDM)
+                    await user.send(message)
+        except Exception as e:
+            user = await self.bot.fetch_user(myID)
+            await user.send("Exception in dm: ```" + str(e) + "```")
+
+    @commands.command()
+    async def purge(self, ctx, amt):
+        try:
+            if ctx.author.id == int(myID):
+                await ctx.channel.purge(limit = int(amt) + 1)
+                msg = await ctx.send(f"Purged {amt} messages.")
+                await asyncio.sleep(3)
+                await msg.delete()
+        except Exception as e:
+            user = await self.bot.fetch_user(myID)
+            await user.send("Exception in purge: ```" + str(e) + "```")
+
 async def setup(bot):
     await bot.add_cog(Util(bot))
