@@ -40,15 +40,18 @@ class Util(commands.Cog):
     @commands.command()
     async def dm(self, ctx, userToDM: int=None, *messageToSend):
         try:
-            if userToDM == None:
-                await ctx.send("Must Provide a User ID!")
-            elif messageToSend == None:
-                await ctx.send("No message!")
-            else:
-                if str(ctx.author.id) == myID:
-                    message = ' '.join(messageToSend)
-                    user = await self.bot.fetch_user(userToDM)
-                    await user.send(message)
+            if str(ctx.author.id) == myID:
+                if userToDM == None:
+                    await ctx.send("Must Provide a User ID!")
+                elif messageToSend == None:
+                    await ctx.send("No message!")
+                else:
+                    if str(ctx.author.id) == myID:
+                        message = ' '.join(messageToSend)
+                        user = await self.bot.fetch_user(userToDM)
+                        await user.send(message)
+            else: 
+                await ctx.send("only bran can do that")
         except Exception as e:
             user = await self.bot.fetch_user(myID)
             await user.send("Exception in dm: ```" + str(e) + "```")
